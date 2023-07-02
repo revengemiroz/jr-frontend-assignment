@@ -1,21 +1,29 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
+import Sidebar from "@/components/Sidebar";
+import "./globals.css";
+import { Inter } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import Providers from "@/utils/Provider";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'Music Sansar',
-  description: 'Sansar for music lovers',
-}
+  title: "Music Sansar",
+  description: "Sansar for music lovers",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
+      </body>
     </html>
-  )
+  );
 }
